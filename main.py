@@ -93,6 +93,8 @@ def save_data(data):
         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
 
         # Додавання словника
+        if not os.path.exists(JSON_PATH.split('/')[0]):
+            os.mkdir('storage')
         if not os.path.exists(JSON_PATH):
             with open(JSON_PATH, 'w', encoding='utf-8') as f:
                 json.dump({}, f)
