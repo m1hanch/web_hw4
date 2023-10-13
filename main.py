@@ -93,6 +93,9 @@ def save_data(data):
         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
 
         # Додавання словника
+        if not os.path.exists(JSON_PATH):
+            with open(JSON_PATH, 'w', encoding='utf-8') as f:
+                json.dump({}, f)
         with open(JSON_PATH, 'r', encoding='utf-8') as f:
             json_dict = {date: data_dict} if os.stat(JSON_PATH).st_size == 0 else json.load(f)
         json_dict.update({date: data_dict})
