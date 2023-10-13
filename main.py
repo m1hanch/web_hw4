@@ -102,7 +102,7 @@ def save_data(data):
             json_dict = {date: data_dict} if os.stat(JSON_PATH).st_size == 0 else json.load(f)
         json_dict.update({date: data_dict})
         with open(JSON_PATH, 'w', encoding='utf-8') as f:
-            json.dump(json_dict, f, indent=4)
+            json.dump(json_dict, f, indent=4, ensure_ascii=False)
 
     # обробка помилок
     except ValueError as err:
